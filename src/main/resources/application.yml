@@ -7,7 +7,20 @@ spring:
     gateway:
       routes:
         - id: gateway-service
-          uri: https://www.baidu.com
+          uri: https://www.nginx.cn/
           order: 0
           predicates:
-            - After=2019-01-01T00:00:00+08:00[Asia/Shanghai]
+            - Path=/api/**
+# Eureka配置
+eureka:
+  instance:
+    # eureka服务端的实例名称
+    hostname: client
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}:${random.value}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
