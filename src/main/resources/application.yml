@@ -18,6 +18,13 @@ spring:
             - Path=/b/**
           filters:
             - StripPrefix=1
+        - id: host_route1
+        #此处填写注册中心服务名，大小写不敏感
+          uri: lb://eureka-client1
+          predicates:
+            - Path=/a1/**
+          filters:
+            - StripPrefix=1
 # Eureka配置
 eureka:
   instance:
