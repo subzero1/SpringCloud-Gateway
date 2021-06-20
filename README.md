@@ -13,7 +13,7 @@ spring cloud 子项目，网关服务，提供静态路由，请求转发等功�
 EurekaServerDemo1,ConfigService,service2,本项目Gateway最后启动
 
 ### 启动后项目测试
-* 测试微服务1转发，ip方式:http://localhost:8080/a/test/t1]
+* 测试微服务1转发，ip方式:http://localhost:8080/a/test/t1
 * 测试微服务2转发，ip方式:http://localhost:8080/b/test/t1
 * 测试服务名,微服务1转发 http://localhost:8080/a1/test/t1
 * 测试负载均衡<br />
