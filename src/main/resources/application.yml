@@ -6,25 +6,29 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: host_route
+        - id: host_route1
           uri: http://localhost:8771
           predicates:
             - Path=/a/**
           filters:
             - StripPrefix=1
-        - id: host_route
+        - id: host_route2
           uri: http://localhost:8772
           predicates:
             - Path=/b/**
           filters:
             - StripPrefix=1
-        - id: host_route1
+        - id: host_route3
         #此处填写注册中心服务名，大小写不敏感
           uri: lb://eureka-client1
           predicates:
             - Path=/a1/**
           filters:
             - StripPrefix=1
+        - id: host_route4
+          uri: http://10.17.68.211:8089/
+          predicates:
+            - Path=/gzgx1_wx_04/**
 # Eureka配置
 eureka:
   instance:
