@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
     name: api-gateway
@@ -25,10 +25,36 @@ spring:
             - Path=/a1/**
           filters:
             - StripPrefix=1
-        - id: host_route4
-          uri: http://10.17.68.211:8089/
+        # 销雄-登记单接口
+        - id: host_route5
+          uri: http://127.0.0.1:9081/
           predicates:
-            - Path=/gzgx1_wx_04/**
+            - Path=/gzgx1_wx_05/**
+        # 小助手接口
+        - id: host_route6
+          uri: http://127.0.0.1:9091/
+          predicates:
+            - Path=/SelDbCJZS/**
+        # 广东数据集市接口
+        - id: host_route7
+          uri: http://127.0.0.1:9091/
+          predicates:
+            - Path=/SelDbGDODS20191018/**
+        # 中山数据集市接口
+        - id: host_route8
+          uri: http://127.0.0.1:9091/
+          predicates:
+              - Path=/SelZsGDODS20191018/**
+        # 佛山数据集市接口
+        - id: host_route9
+          uri: http://127.0.0.1:9091/
+          predicates:
+            - Path=/SelFsGDODS20191017/**
+        # 查划接口
+        - id: host_route10
+          uri: http://127.0.0.1:9081/
+          predicates:
+            - Path=/emp-pro/**
 # Eureka配置
 eureka:
   instance:
