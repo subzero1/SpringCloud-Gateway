@@ -55,6 +55,11 @@ spring:
           uri: http://127.0.0.1:9081/
           predicates:
             - Path=/emp-pro/**
+        # 弱密码接口
+        - id: host_route11
+          uri: http://127.0.0.1:9081/
+          predicates:
+            - Path=/Verification/**
 # Eureka配置
 eureka:
   instance:
