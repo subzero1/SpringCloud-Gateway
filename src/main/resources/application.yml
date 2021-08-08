@@ -1,75 +1,10 @@
 server:
-  port: 8081
-spring:
-  application:
-    name: api-gateway
-  cloud:
-    gateway:
-      routes:
-        - id: host_route1
-          uri: http://localhost:8771
-          predicates:
-            - Path=/a/**
-          filters:
-            - StripPrefix=1
-        - id: host_route2
-          uri: http://localhost:8772
-          predicates:
-            - Path=/b/**
-          filters:
-            - StripPrefix=1
-        - id: host_route3
-        #此处填写注册中心服务名，大小写不敏感
-          uri: lb://eureka-client1
-          predicates:
-            - Path=/a1/**
-          filters:
-            - StripPrefix=1
-        # 销雄-登记单接口
-        - id: host_route5
-          uri: http://127.0.0.1:9081/
-          predicates:
-            - Path=/gzgx1_wx_05/**
-        # 小助手接口
-        - id: host_route6
-          uri: http://127.0.0.1:9091/
-          predicates:
-            - Path=/SelDbCJZS/**
-        # 广东数据集市接口
-        - id: host_route7
-          uri: http://127.0.0.1:9091/
-          predicates:
-            - Path=/SelDbGDODS20191018/**
-        # 中山数据集市接口
-        - id: host_route8
-          uri: http://127.0.0.1:9091/
-          predicates:
-              - Path=/SelZsGDODS20191018/**
-        # 佛山数据集市接口
-        - id: host_route9
-          uri: http://127.0.0.1:9091/
-          predicates:
-            - Path=/SelFsGDODS20191017/**
-        # 查划接口
-        - id: host_route10
-          uri: http://127.0.0.1:9081/
-          predicates:
-            - Path=/emp-pro/**
-        # 弱密码接口
-        - id: host_route11
-          uri: http://127.0.0.1:9081/
-          predicates:
-            - Path=/Verification/**
-# Eureka配置
-eureka:
-  instance:
-    # eureka服务端的实例名称
-    hostname: client
-    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}:${random.value}
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-logging:
-  level:
-    org.springframework.cloud.gateway: debug
+  port: 8080
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
