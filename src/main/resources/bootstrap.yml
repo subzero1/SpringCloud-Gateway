@@ -8,6 +8,13 @@ spring:
       discovery:
         enabled: true  # 开启
         service-id: config-server # 指定配置中心服务端的server-id
+    bus:
+      refresh:
+        enabled: true
+  kafka:
+    bootstrap-servers: 172.53.49.16:9092
+    consumer:
+      group-id: test
 # Eureka配置
 eureka:
   instance:
