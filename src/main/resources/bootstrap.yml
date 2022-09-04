@@ -2,12 +2,33 @@ spring:
   application:
     name: api-gateway
   cloud:
-    config:
-      label: master
-      profile: dev
-      discovery:
-        enabled: true  # 开启
-        service-id: config-server # 指定配置中心服务端的server-id
+#    config:
+#      label: master
+#      profile: dev
+#      discovery:
+#        enabled: true  # 开启
+#        service-id: config-server # 指定配置中心服务端的server-id
+     gateway:
+       routes:
+         - id: host_route1
+           uri: http://localhost:8771
+           predicates:
+             - Path=/a/**
+           filters:
+             - StripPrefix=1
+         - id: host_route2
+           uri: http://localhost:8772
+           predicates:
+             - Path=/b/**
+           filters:
+             - StripPrefix=1
+         - id: host_route3
+           #此处填写注册中心服务名，大小写不敏感
+           uri: lb://eureka-client1
+           predicates:
+             - Path=/a1/**
+           filters:
+             - StripPrefix=1
 # Eureka配置
 eureka:
   instance:
